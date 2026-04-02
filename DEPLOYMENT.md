@@ -20,6 +20,9 @@ I have added a `vercel.json` in the `client/` directory for proper SPA routing.
 *   Click **Add New** -> **Project**.
 *   Select this repository.
 *   **Root Directory**: Set this to `client`.
+*   **Framework Preset**: Change this to **Vite** (The error "react-scripts: command not found" means this is currently set incorrectly to Create React App).
+*   **Build Command**: Ensure it says `npm run build` or `vite build`.
+*   **Output Directory**: Ensure it says `dist`.
 *   **Environment Variables**:
     *   `VITE_API_URL`: Set this to your backend URL on Render (e.g., `https://your-api.onrender.com`).
 
