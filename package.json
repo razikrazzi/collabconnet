@@ -1,4 +1,12 @@
 {
+  "name": "collab-connect",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install"
+  },
   "dependencies": {
     "mongodb": "^7.1.0"
   }
