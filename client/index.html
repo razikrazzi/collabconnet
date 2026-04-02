@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CollabConnect - Connect. Collaborate. Create Impact.</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Tailwind Play CDN for immediate styling -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13c8ec",
+            "secondary": "#6366f1",
+            "brand-primary": "#8b5cf6",
+            "brand-secondary": "#d946ef",
+            "brand-accent": "#fbbf24",
+            "background-light": "#f6f8f8",
+            "background-dark": "#101f22",
+            "brand-background": "#0f172a",
+            "surface-dark": "#192f33",
+            "brand-surface": "#1e293b",
+            "border-dark": "#325e67",
+            "brand-border": "#334155",
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .mesh-gradient {
+      background-color: #101f22;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(19, 200, 236, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(19, 200, 236, 0.1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+    }
+
+    .brand-mesh-gradient {
+      background-color: #0f172a;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(217, 70, 239, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(217, 70, 239, 0.1) 0px, transparent 50%);
+    }
+
+    .material-symbols-outlined {
+      display: inline-block;
+      vertical-align: middle;
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>
