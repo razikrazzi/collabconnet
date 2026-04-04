@@ -26,7 +26,7 @@ const InfluencerDashboard = () => {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
 
                 // Fetch full profile to check for onboarding
-                const profileRes = await axios.get('http://localhost:5001/api/auth/profile', config);
+                const profileRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/auth/profile', config);
                 const fullUser = profileRes.data;
 
 
@@ -34,14 +34,14 @@ const InfluencerDashboard = () => {
                 // Update local user context
                 setUser(prev => ({ ...prev, ...fullUser }));
 
-                const { data } = await axios.get('http://localhost:5001/api/campaigns', config);
+                const { data } = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/campaigns', config);
                 setCampaigns(data);
 
-                const brandsRes = await axios.get('http://localhost:5001/api/auth/brands', config);
+                const brandsRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/auth/brands', config);
                 setBrands(brandsRes.data);
                 setBrandsLoading(false);
 
-                const inviteRes = await axios.get('http://localhost:5001/api/invitations/my', config);
+                const inviteRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/invitations/my', config);
                 setInvitationCount(inviteRes.data.filter(i => i.status === 'New').length);
             } catch (err) {
                 console.error('Error fetching data:', err);

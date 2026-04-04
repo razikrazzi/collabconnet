@@ -23,7 +23,7 @@ const CampaignDetails = () => {
         const fetchCampaign = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const res = await axios.get('http://localhost:5001/api/campaigns/' + id, config);
+                const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/campaigns/' + id, config);
                 setCampaign(res.data);
                 setLoading(false);
             } catch (err) {

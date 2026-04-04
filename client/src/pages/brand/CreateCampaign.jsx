@@ -75,7 +75,7 @@ const CreateCampaign = () => {
         setLoading(true);
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.post('http://localhost:5001/api/campaigns', formData, config);
+            await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/campaigns', formData, config);
             setSuccess(true);
             setTimeout(() => navigate('/brand/campaigns'), 2000);
         } catch (err) {

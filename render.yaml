@@ -8,7 +8,7 @@ services:
     startCommand: node index.js
     rootDir: server
     envVars:
-      - key: MONGO_URI
+      - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
         generateValue: true

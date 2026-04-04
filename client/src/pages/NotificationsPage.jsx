@@ -13,7 +13,7 @@ const NotificationsPage = () => {
         const fetchNotifications = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5001/api/notifications', config);
+                const { data } = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/notifications', config);
                 setNotifications(data);
             } catch (err) {
                 console.error('Error fetching notifications:', err);
@@ -25,7 +25,7 @@ const NotificationsPage = () => {
     const markAsRead = async (id) => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(`http://localhost:5001/api/notifications/${id}`, {}, config);
+            await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/notifications/${id}`, {}, config);
             setNotifications(notifications.map(n => n._id === id ? { ...n, read: true } : n));
         } catch (err) {
             console.error('Error marking notification as read:', err);

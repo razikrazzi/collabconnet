@@ -14,7 +14,7 @@ const CampaignChat = ({ campaignId, currentUser, campaign }) => {
 
     const fetchMessages = useCallback(async () => {
         try {
-            const res = await axios.get('http://localhost:5001/api/messages/campaign/' + campaignId);
+            const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/messages/campaign/' + campaignId);
             if (Array.isArray(res.data)) {
                 setMessages(res.data);
             } else {

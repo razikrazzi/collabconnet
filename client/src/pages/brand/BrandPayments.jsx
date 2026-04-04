@@ -25,8 +25,8 @@ const BrandPayments = () => {
             console.log('[BrandPayments] Fetching data...');
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
             const [payRes, delivRes] = await Promise.all([
-                axios.get('http://localhost:5001/api/payments', config),
-                axios.get('http://localhost:5001/api/deliverables/brand', config)
+                axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/payments', config),
+                axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/deliverables/brand', config)
             ]);
             console.log('[BrandPayments] Payments:', payRes.data.length);
             console.log('[BrandPayments] Deliverables:', delivRes.data.length);
@@ -48,7 +48,7 @@ const BrandPayments = () => {
         
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(`http://localhost:5001/api/payments/${paymentId}/release`, {}, config);
+            await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/payments/${paymentId}/release`, {}, config);
             fetchData();
         } catch (err) {
             console.error('Payment release failed:', err);

@@ -21,7 +21,7 @@ const InfluencerPayments = () => {
     const fetchPayments = useCallback(async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get('http://localhost:5001/api/payments', config);
+            const { data } = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/payments', config);
             setPayments(data);
             setLoading(false);
         } catch (err) {

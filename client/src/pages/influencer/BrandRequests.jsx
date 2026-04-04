@@ -23,7 +23,7 @@ const BrandRequests = () => {
         setError(null);
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get('http://localhost:5001/api/invitations/my', config);
+            const { data } = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/invitations/my', config);
             setRequests(data);
             setLoading(false);
         } catch (err) {
@@ -45,7 +45,7 @@ const BrandRequests = () => {
     const handleStatusUpdate = async (id, status) => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(`http://localhost:5001/api/invitations/${id}/status`, { status }, config);
+            await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/invitations/${id}/status`, { status }, config);
             
             // Update local state
             setRequests(prev => prev.map(req => 

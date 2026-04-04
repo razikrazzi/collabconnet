@@ -28,7 +28,7 @@ const ChatPage = () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
                 // Using a simplified mock fetch for contacts here
-                const { data } = await axios.get('http://localhost:5001/api/auth/profile', config);
+                const { data } = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/auth/profile', config);
                 // In a real app, this would be a list of people involved in collaborations
                 setContacts([
                     { _id: '65e123456789012345678901', name: 'Brand Tech Lab', role: 'Brand', avatar: '🏢' },

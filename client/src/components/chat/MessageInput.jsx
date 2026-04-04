@@ -35,7 +35,7 @@ const MessageInput = ({ onSendMessage, campaignId, receiverId }) => {
                 // Assuming an endpoint for file upload exists or using a generic one
                 // In this implementation, we'll suggest using a separate upload route if needed
                 // but for now, we'll focus on the message sending logic.
-                const res = await axios.post('http://localhost:5001/api/chat/upload', formData, {
+                const res = await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/chat/upload', formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 });
                 fileUrl = res.data.url;

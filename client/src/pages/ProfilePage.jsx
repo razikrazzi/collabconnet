@@ -33,11 +33,11 @@ const ProfilePage = () => {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
 
                 // Fetch latest profile
-                const profileRes = await axios.get('http://localhost:5001/api/auth/profile', config);
+                const profileRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/auth/profile', config);
                 setUser(prev => ({ ...prev, ...profileRes.data }));
 
                 // Fetch campaigns for stats
-                const campRes = await axios.get('http://localhost:5001/api/campaigns', config);
+                const campRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/campaigns', config);
                 setCampaigns(campRes.data);
 
                 setLoading(false);
@@ -74,7 +74,7 @@ const ProfilePage = () => {
         setIsUpdating(true);
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.put('http://localhost:5001/api/auth/profile', editData, config);
+            const { data } = await axios.put((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/auth/profile', editData, config);
             setUser(prev => ({ ...prev, ...data }));
             setIsEditModalOpen(false);
             // Optional: Show success toast

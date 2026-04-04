@@ -27,11 +27,11 @@ const InfluencerProfile = () => {
         const fetchInfluencer = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get(`http://localhost:5001/api/influencers/${id}`, config);
+                const { data } = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/influencers/${id}`, config);
                 setInfluencer(data);
 
                 // Fetch brand's campaigns for invitation
-                const campRes = await axios.get('http://localhost:5001/api/campaigns', config);
+                const campRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/campaigns', config);
                 setCampaigns(campRes.data);
 
                 setLoading(false);

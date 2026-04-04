@@ -22,7 +22,7 @@ const DiscoverInfluencers = () => {
         const fetchInfluencers = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get('http://localhost:5001/api/influencers', config);
+                const { data } = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/influencers', config);
                 setInfluencers(data);
                 setLoading(false);
             } catch (err) {

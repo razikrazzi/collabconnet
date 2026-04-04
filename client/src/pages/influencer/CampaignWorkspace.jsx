@@ -38,11 +38,11 @@ const CampaignWorkspace = () => {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
             
             // Fetch Campaign
-            const campaignRes = await axios.get(`http://localhost:5001/api/campaigns/${id}`, config);
+            const campaignRes = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}`, config);
             setCampaign(campaignRes.data);
  
             // Fetch Deliverable for this campaign
-            const delivRes = await axios.get(`http://localhost:5001/api/deliverables/campaign/${id}`, config);
+            const delivRes = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/deliverables/campaign/${id}`, config);
             const myDeliv = Array.isArray(delivRes.data) 
                 ? delivRes.data.find(d => (d.influencer?._id || d.influencer) === user._id)
                 : null;
@@ -77,7 +77,7 @@ const CampaignWorkspace = () => {
                 notes: notes
             };
             
-            await axios.post('http://localhost:5001/api/deliverables', payload, config);
+            await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/deliverables', payload, config);
             setSubmissionStatus('Pending');
             setIsSubmitting(false);
             // Refresh data

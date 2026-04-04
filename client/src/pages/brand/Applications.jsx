@@ -21,7 +21,7 @@ const Applications = () => {
     const fetchApplications = useCallback(async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get('http://localhost:5001/api/applications/brand', config);
+            const { data } = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/applications/brand', config);
             setApplications(data);
             setLoading(false);
         } catch (err) {
@@ -38,7 +38,7 @@ const Applications = () => {
     const handleStatusUpdate = async (id, status) => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(`http://localhost:5001/api/applications/${id}/status`, { status }, config);
+            await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/applications/${id}/status`, { status }, config);
             
             // Update local state instead of refetching everything
             setApplications(prev => prev.map(app => 

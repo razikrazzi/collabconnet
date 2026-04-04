@@ -61,7 +61,7 @@ const BrandDashboard = () => {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
 
                 // Fetch Campaigns
-                const campaignRes = await axios.get('http://localhost:5001/api/campaigns', config);
+                const campaignRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/campaigns', config);
                 setCampaigns(campaignRes.data);
 
                 const active = campaignRes.data.filter(c => c.status === 'Active').length;
@@ -69,18 +69,18 @@ const BrandDashboard = () => {
                 const completed = campaignRes.data.filter(c => c.status === 'Completed').length;
                 setStats({ active, pending, completed });
 
-                const influencerRes = await axios.get('http://localhost:5001/api/influencers', config);
+                const influencerRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/influencers', config);
                 // Just take the first 3 for the dashboard
                 setRecommendedInfluencers(influencerRes.data.slice(0, 3));
 
                 // Fetch Applications for notification badge
-                const appRes = await axios.get('http://localhost:5001/api/applications/brand', config);
+                const appRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/applications/brand', config);
                 const pendingApps = appRes.data.filter(a => a.status === 'Pending').length;
                 setApplicationCount(pendingApps);
                 setTotalApps(appRes.data.length);
 
                 // Fetch Deliverables for review count
-                const delivRes = await axios.get('http://localhost:5001/api/deliverables/brand', config);
+                const delivRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/deliverables/brand', config);
                 const pendingD = delivRes.data.filter(d => ['Under Review', 'Pending', 'Draft Submitted', 'Revision Requested'].includes(d.status)).length;
                 setPendingReviews(pendingD);
 

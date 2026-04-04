@@ -25,7 +25,7 @@ const CampaignApply = () => {
         const fetchCampaign = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get(`http://localhost:5001/api/campaigns/${id}`, config);
+                const { data } = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}`, config);
                 setCampaign(data);
                 setLoading(false);
             } catch (err) {
@@ -51,7 +51,7 @@ const CampaignApply = () => {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
             // Note: This endpoint is assumed based on standard patterns, 
             // the user might need to adjust based on their actual backend.
-            await axios.post('http://localhost:5001/api/applications', {
+            await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5001') + '/api/applications', {
                 campaignId: id,
                 pitch
             }, config);
