@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node index.js",
-    "seed": "node seedInfluencers.js"
+    "seed": "node seedInfluencers.js",
+    "build": "npm install"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
