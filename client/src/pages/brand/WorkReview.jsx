@@ -30,7 +30,7 @@ const WorkReview = () => {
     const fetchDeliverable = useCallback(async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/deliverables/${id}`, config);
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/deliverables/${id}`, config);
             setDeliverable(data);
             setLoading(false);
         } catch (err) {
@@ -49,7 +49,7 @@ const WorkReview = () => {
 
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/deliverables/${id}`, { status }, config);
+            await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/deliverables/${id}`, { status }, config);
             
             if (status === 'Approved') {
                 setIsSuccess(true);

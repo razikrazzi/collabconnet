@@ -28,7 +28,7 @@ const BrandProfileView = () => {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
                 
                 // Fetch Brand Profile
-                const brandRes = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/auth/brands/${id}`, config);
+                const brandRes = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/auth/brands/${id}`, config);
                 setBrand(brandRes.data);
 
                 // Fetch All Campaigns and filter for this brand

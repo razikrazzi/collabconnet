@@ -19,10 +19,10 @@ const RecommendedInfluencers = () => {
         const fetchData = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const campaignRes = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}`, config);
+                const campaignRes = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}`, config);
                 setCampaign(campaignRes.data);
 
-                const matchRes = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}/match`, config);
+                const matchRes = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}/match`, config);
                 setInfluencers(matchRes.data);
             } catch (err) {
                 console.error('Error matching:', err);

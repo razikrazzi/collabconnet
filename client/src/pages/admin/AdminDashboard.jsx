@@ -54,7 +54,7 @@ const AdminDashboard = () => {
         if (!window.confirm('Are you sure you want to delete this user?')) return;
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.delete(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/admin/users/${id}`, config);
+            await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/admin/users/${id}`, config);
             setUsers(users.filter(u => u._id !== id));
         } catch (err) {
             console.error('Delete error:', err);
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
         if (!window.confirm('Are you sure you want to delete this campaign?')) return;
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.delete(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/admin/campaigns/${id}`, config);
+            await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/admin/campaigns/${id}`, config);
             setCampaigns(campaigns.filter(c => c._id !== id));
         } catch (err) {
             console.error('Delete error:', err);
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
             // Use localhost consistently
-            const { data } = await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}/status`, { status }, config);
+            const { data } = await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/campaigns/${id}/status`, { status }, config);
 
             console.log('Update success:', data);
 

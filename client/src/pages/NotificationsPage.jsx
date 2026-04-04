@@ -25,7 +25,7 @@ const NotificationsPage = () => {
     const markAsRead = async (id) => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/notifications/${id}`, {}, config);
+            await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/notifications/${id}`, {}, config);
             setNotifications(notifications.map(n => n._id === id ? { ...n, read: true } : n));
         } catch (err) {
             console.error('Error marking notification as read:', err);

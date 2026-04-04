@@ -27,7 +27,7 @@ const InfluencerProfile = () => {
         const fetchInfluencer = async () => {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                const { data } = await axios.get(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/influencers/${id}`, config);
+                const { data } = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/influencers/${id}`, config);
                 setInfluencer(data);
 
                 // Fetch brand's campaigns for invitation

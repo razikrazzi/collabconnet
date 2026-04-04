@@ -48,7 +48,7 @@ const BrandPayments = () => {
         
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            await axios.put(${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/payments/${paymentId}/release`, {}, config);
+            await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/payments/${paymentId}/release`, {}, config);
             fetchData();
         } catch (err) {
             console.error('Payment release failed:', err);
